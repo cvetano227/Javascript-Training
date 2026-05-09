@@ -192,3 +192,5 @@ switch (day) {
 /// x broj deliv so y
 // broj dali e paren ili neparen
 // ispecati zbir, razlika, proizvod na 2 broja so promenlivi
+
+///ALSO READ ABOUT FUNCTIONS AT

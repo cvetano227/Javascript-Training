@@ -1,0 +1,31 @@
+<html>
+  <body>
+    <script>
+      // VEZBA 1.
+      //   const password = "MojotPassword123";
+      //   const userInput = prompt("Vnesete go vasiot password:");
+
+      //   if (userInput === password) {
+      //     alert("Uspesno vnesovte password, pristapot e dozvolen");
+      //   } else {
+      //     alert("Gresen password, pristapot e odbien");
+      //   }
+
+      // VEZBA 2.
+
+      const balance = 1000;
+      const withdraw = prompt("Vnesete go iznosot za podignuvanje:");
+      const newBalance = balance - withdraw;
+
+      if (withdraw > balance) {
+        alert("Nemate dovolno sredstva na vasata smetka");
+      } else if (withdraw <= 0) {
+        alert("Vnesete validen iznos za podignuvanje");
+      } else {
+        alert(
+          `Uspesno podignavte ${withdraw} denari. Vi preostanuvaat ${newBalance} denari na smetkata.`,
+        );
+      }
+    </script>
+  </body>
+</html>
