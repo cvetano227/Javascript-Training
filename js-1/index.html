@@ -146,6 +146,50 @@
 
       // console.log(roundTo(7, 5)); // Output: 5
       // console.log(roundTo(12, 5));
+
+      // let yourName;
+      // do {
+      //   yourName = prompt("Vnesete go vaseto ime:");
+      // } while (!yourName);
+      // console.log(`Zdravo, ${yourName}!`);
+
+      // const password = "MojotPassword123";
+      // do {
+      //   userInput = prompt("Vnesete go vasiot password:");
+      // } while (userInput !== password);
+
+      // if (userInput === password) {
+      //   alert("Uspesno vnesovte password, pristapot e dozvolen");
+      // } else {
+      //   alert("Gresen password, pristapot e odbien");
+      // }
+
+      //   const password = "MojotPassword123";
+
+      //   let userInput;
+
+      //   do {
+      //     userInput = prompt("Vnesete go vasiot password:");
+
+      //     if (userInput !== password) {
+      //       alert("Gresen password, probajte povtorno");
+      //     }
+      //   } while (userInput !== password);
+
+      //   alert("Uspesno vnesovte password, pristapot e dozvolen");
+      //
+
+      guessNumber = 50;
+      do {
+        userGuess = prompt("Pogodote go tocniot broj od 1 do 100: ");
+        if (userGuess < guessNumber) {
+          alert("Vasiot pogodok e premal, probajte povtorno.");
+        } else if (userGuess > guessNumber) {
+          alert("Vasiot pogodok e pregolem, probajte povtorno.");
+        } else {
+          alert("Cestitki! Pogodivte go tocniot broj!");
+        }
+      } while (userGuess != guessNumber);
     </script>
   </body>
 </html>
