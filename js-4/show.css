@@ -10,23 +10,43 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 18px 30px;
   background: rgba(0, 0, 0, 0.6);
+
   position: sticky;
   top: 0;
+  z-index: 10;
+
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  z-index: 10;
 }
 
+/* optional grouping safety */
+.top-bar-left,
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ================= NEXT BUTTON ================= */
 #next-btn {
   background: #d72638;
   border: none;
   padding: 10px 16px;
   color: white;
   border-radius: 10px;
+
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.2s ease;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 #next-btn:hover {
@@ -40,7 +60,6 @@ body {
   overflow: hidden;
 }
 
-/* blurred background */
 .show-bg {
   position: absolute;
   inset: 0;
@@ -52,7 +71,6 @@ body {
   z-index: 0;
 }
 
-/* dark overlay */
 #show::after {
   content: "";
   position: absolute;
@@ -65,10 +83,10 @@ body {
   z-index: 1;
 }
 
-/* hero content */
 .show-hero {
   position: relative;
   z-index: 2;
+
   display: flex;
   gap: 30px;
   align-items: flex-start;
@@ -82,11 +100,17 @@ body {
 
 .show-info {
   max-width: 750px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  min-width: 0;
 }
 
 .show-info h2 {
   font-size: 34px;
-  margin-bottom: 10px;
+  margin: 0;
 }
 
 .show-meta {
@@ -94,30 +118,48 @@ body {
   gap: 15px;
   font-size: 14px;
   opacity: 0.8;
-  margin-bottom: 15px;
 }
 
 .show-info p {
   line-height: 1.6;
   opacity: 0.8;
-  margin-bottom: 20px;
+  margin: 0;
 }
 
+/* ================= WATCH BUTTON (FIXED) ================= */
 .watch-btn {
-  display: inline-block;
-  padding: 10px 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 18px;
   background: #d72638;
-  color: white;
+  color: #ffffff;
   text-decoration: none;
+
   border-radius: 10px;
-  transition: 0.2s;
+  font-weight: 600;
+  font-size: 14px;
+
+  transition: 0.2s ease;
+  cursor: pointer;
+
+  width: fit-content;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .watch-btn:hover {
   background: #b91f2f;
+  transform: translateY(-2px);
+}
+
+.watch-btn:active {
+  transform: translateY(0);
 }
 
 /* ================= EPISODES ================= */
+#episodes,
 #episodes-list {
   padding: 30px;
 }
@@ -138,16 +180,19 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 20px;
+  align-items: stretch;
 }
 
-/* ================= EPISODE CARD (FIXED UNIFORM SIZE) ================= */
+/* ================= EPISODE CARD ================= */
 .episode-card {
   display: flex;
   flex-direction: column;
   height: 100%;
+
   background: linear-gradient(145deg, #161a22, #11151c);
   border-radius: 14px;
   overflow: hidden;
+
   border: 1px solid rgba(255, 255, 255, 0.06);
   transition: 0.25s ease;
 }
@@ -158,7 +203,6 @@ body {
   border-color: rgba(215, 38, 56, 0.4);
 }
 
-/* IMAGE FIXED HEIGHT */
 .episode-card img {
   width: 100%;
   height: 140px;
@@ -166,44 +210,51 @@ body {
   flex-shrink: 0;
 }
 
-/* CONTENT FLEX */
+/* CONTENT */
 .episode-content {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 12px;
   gap: 8px;
+
+  padding: 12px;
+  min-height: 0;
 }
 
-/* EPISODE BADGE */
+/* BADGE */
 .episode-number {
   font-size: 12px;
   padding: 4px 10px;
   border-radius: 20px;
+
   background: rgba(215, 38, 56, 0.15);
   color: #ff4d5a;
+
   width: fit-content;
 }
 
-/* TITLE CLAMP */
+/* TITLE (NO WEBKIT CLAMP) */
 .episode-card h3 {
   margin: 0;
   font-size: 14px;
+  line-height: 1.3;
 
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  max-height: calc(1.3em * 2);
   overflow: hidden;
 }
 
-/* DESCRIPTION CLAMP */
+/* DESCRIPTION (NO WEBKIT CLAMP) */
 .episode-card p {
+  margin: 0;
   font-size: 12px;
-  opacity: 0.75;
   line-height: 1.4;
+  opacity: 0.75;
 
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  max-height: calc(1.4em * 3);
   overflow: hidden;
+}
+
+/* optional spacing */
+.episode-card a {
+  margin-top: auto;
 }
