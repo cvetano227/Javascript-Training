@@ -19,8 +19,31 @@ function renderShow(show) {
   showTitle.innerText = show.name;
 
   showContainer.innerHTML = `
-    <img src="${show.image?.medium || ""}" alt="${show.name}" />
-    <p>${show.summary ? show.summary.replace(/<[^>]*>/g, "") : ""}</p>
+    <div class="show-bg" style="background-image: url('${show.image?.original || show.image?.medium || ""}')"></div>
+
+    <div class="show-hero">
+      <div class="show-poster">
+        <img src="${show.image?.original || show.image?.medium || ""}" alt="${show.name}" />
+      </div>
+
+      <div class="show-info">
+        <h2>${show.name}</h2>
+
+        <div class="show-meta">
+          <span>⭐ ${show.rating?.average || "N/A"}</span>
+          <span>📺 ${show.premiered || "Unknown"}</span>
+          <span>🎭 ${show.genres?.join(", ") || "N/A"}</span>
+        </div>
+
+        <p>
+          ${show.summary ? show.summary.replace(/<[^>]*>/g, "") : "No description available."}
+        </p>
+
+        <a class="watch-btn" href="${show.officialSite || "#"}" target="_blank">
+          Watch / Official Site
+        </a>
+      </div>
+    </div>
   `;
 }
 
