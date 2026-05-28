@@ -1,5 +1,6 @@
 const showsContainer = document.getElementById("shows-container");
 const searchInput = document.querySelector(".hero-actions input");
+const searchButton = document.querySelector(".hero-actions button");
 
 let allShows = [];
 
@@ -14,10 +15,15 @@ async function getShows() {
 function renderShows(shows) {
   showsContainer.innerHTML = "";
 
+  if (shows.length === 0) {
+    showsContainer.innerHTML = `<p style="color:white; padding:20px;">No results found</p>`;
+    return;
+  }
+
   shows.forEach((show) => {
     let rating = "";
 
-    const stars = Math.round((show.rating.average || 0) / 2); // 0–10 → 0–5
+    const stars = Math.round((show.rating?.average || 0) / 2);
 
     for (let i = 0; i < stars; i++) {
       rating += `<i class="fa fa-star"></i>`;
@@ -47,14 +53,23 @@ function renderShows(shows) {
   });
 }
 
-searchInput.addEventListener("input", (e) => {
-  const value = e.target.value.toLowerCase();
+function filterShows() {
+  const value = searchInput.value.toLowerCase();
 
   const filtered = allShows.filter((show) =>
     show.name.toLowerCase().includes(value),
   );
 
   renderShows(filtered);
+}
+
+searchInput.addEventListener("input", filterShows);
+searchButton.addEventListener("click", filterShows);
+
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    filterShows();
+  }
 });
 
 getShows();

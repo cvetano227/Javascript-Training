@@ -1,27 +1,28 @@
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SHOW</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Show Details</title>
+    <link rel="stylesheet" href="show.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     />
   </head>
+
   <body>
-    <div>
+    <header class="top-bar">
       <h1 id="show-title"></h1>
-      <button id="next-btn">Next Show</button>
-    </div>
+      <button id="next-btn">Next Show →</button>
+    </header>
 
-    <div id="show"></div>
+    <section id="show"></section>
 
-    <div id="episodes">
-      <h1 id="episodes-title">Episodes</h1>
-      <ul id="episodes-list"></ul>
-    </div>
-    <!-- https://api.tvmaze.com/shows/1/episodes -->
+    <section id="episodes">
+      <h2 class="section-title">Episodes</h2>
+      <div id="episodes-list"></div>
+    </section>
 
     <script src="show.js"></script>
   </body>
